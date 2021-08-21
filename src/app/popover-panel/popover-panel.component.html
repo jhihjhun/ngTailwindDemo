@@ -1,0 +1,5 @@
+<div [ngClass]="[!isShowPanel?'hidden':'']"
+  class="w-[300px] p-4 bg-fb-header rounded-lg shadow-lg absolute right-0 top-12 border border-fb-input lg:w-[360px]">
+  <ng-template #defaultTemplate></ng-template>
+  <ng-template [ngTemplateOutlet]="childTemplate || defaultTemplate"></ng-template>
+</div>

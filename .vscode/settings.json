@@ -1,0 +1,42 @@
+{
+  "javascript.referencesCodeLens.enabled": true,
+  "typescript.referencesCodeLens.enabled": true,
+  // 輸出設定
+  "liveSassCompile.settings.formats": [
+    // 設定輸出至相對專案目錄下
+    {
+      "format": "compressed",
+      "extensionName": ".css",
+      "savePath": "/src/assets/css/"
+    }
+  ],
+  // 僅編譯輸出包含特定目錄下的 scss，如使用 angular 開發，可避免自動編譯 component.scss
+  "liveSassCompile.settings.includeItems": [
+    "/src/scss/**"
+  ],
+  // 排除特定目錄下的 scss 檔案
+  "liveSassCompile.settings.excludeList": [
+    "src/styles.scss"
+  ],
+  "stylelint.config": {
+    "rules": {
+      "at-rule-no-unknown": [
+        true,
+        {
+          "ignoreAtRules": [
+            "tailwind",
+            "apply",
+            "layer",
+            "variants",
+            "responsive",
+            "screen"
+          ]
+        }
+      ],
+      "declaration-block-trailing-semicolon": null,
+      "no-descending-specificity": null
+    }
+  },
+  "css.validate": false,
+  "scss.validate": false
+}
