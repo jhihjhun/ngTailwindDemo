@@ -5,20 +5,32 @@
 @import "~swiper/swiper-bundle";
 
 @layer components {
+
+  // fb-pop 按鈕
   .popover-btn {
     @apply w-[39px] h-[39px] p-2.5 ml-2 rounded-full bg-fb-popover flex justify-center items-center cursor-pointer active:bg-fb-active;
   }
 
+  // fb-貼文
   .story {
     @apply flex-1 px-[4px] min-w-[120px] cursor-pointer;
   }
 
+  // fb-貼文圖片
   .story-image {
     @apply object-cover w-full h-full transition-transform duration-500 transform hover:scale-105;
   }
 
+  // fb-卡片
   .card {
     @apply rounded-lg mt-4 px-4 py-3 bg-fb-card;
+  }
+
+  // 拍賣-分頁頁籤
+  .page-item {
+    .page-link {
+      @apply border p-2 text-ecommerce-primary text-lg;
+    }
   }
 }
 
@@ -77,4 +89,21 @@
 /* Firefox */
 .no-scrollbar {
   scrollbar-width: none;
+}
+
+// 拍賣-分類 active
+.ecommerce-tab-active {
+  color: white;
+  background-color: #fa592f;
+}
+
+// 拍賣-loading spinner
+.spinner-border {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
 }

@@ -8,6 +8,7 @@ import { PricingComponent } from './pricing/pricing.component';
 import { FacebookUIComponent } from './facebook-ui/facebook-ui.component';
 import { PopoverBtnComponent } from './popover-btn/popover-btn.component';
 import { PopoverPanelComponent } from './popover-panel/popover-panel.component';
+import { EcommerceComponent } from './ecommerce/ecommerce.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PopoverPanelComponent } from './popover-panel/popover-panel.component';
     PricingComponent,
     FacebookUIComponent,
     PopoverBtnComponent,
-    PopoverPanelComponent
+    PopoverPanelComponent,
+    EcommerceComponent
   ],
   imports: [
     BrowserModule,

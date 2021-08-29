@@ -1,0 +1,318 @@
+<div class="bg-[E5E5E5] relative">
+  <nav class="">
+    <!-- 搜尋欄 -->
+    <div class="bg-ecommerce-primary">
+      <div class="lg:w-[1280px] h-[133px] lg:h-[100px] lg:mx-auto mx-2">
+        <div class="flex justify-between text-white pt-[7px]">
+          <div class="">
+            <a href="javascript:void(0)">賣家中心</a> |
+            <a href="javascript:void(0)">下載</a>
+          </div>
+          <div class="">
+            <a href="javascript:void(0)">Hi Jeeeed</a> |
+            <a href="javascript:void(0)">登出</a>
+          </div>
+        </div>
+        <div class="w-full flex items-center flex-wrap lg:flex-nowrap text-white">
+          <div class="my-4">
+            <a href="javascript:viod(0)" class="flex flex-shrink-0 mr-2"><svg xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>布魯斯拍賣</a>
+          </div>
+          <div class="w-full lg:flex-1">
+            <div class="flex items-center">
+              <input type="text" class="w-full h-[35px] rounded-[5px] focus:outline-none px-3 text-black"
+                placeholder="看更多">
+              <button
+                class="w-[70px] h-[35px] rounded-[5px] border-2 border-[#FFFFFF] flex items-center justify-center mx-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </button>
+              <button class="w-[70px] h-[35px] flex items-center justify-center" (click)="toggleShoppingcar(true)">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Banner -->
+  <div class="w-full h-[76px] md:h-[390px] flex justify-center">
+    <img class="w-full" src="https://bruce-fe-ec.web.app/images/banner.png" />
+  </div>
+
+  <main class="w-full mb-10">
+    <!-- 搜尋結果 -->
+    <div class="lg:max-w-[1280px] lg:mx-auto mx-2">
+      <div class="grid grid-cols-12 gap-x-4">
+        <!-- 電腦版篩選區 -->
+        <div class="col-span-2 hidden md:block">
+          <div class="flex justify-between items-center h-[80px]">
+            <div class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+              </svg>
+              <p class="text-lg">條件篩選</p>
+            </div>
+          </div>
+          <p class="text-lg mb-3">分類</p>
+          <ng-container *ngFor="let item of filterItem; let i=index">
+            <div *ngIf="i<=4" class="mb-2">
+              <input [id]="'flexCheckDefault'+i" type="checkbox" class="mr-2">
+              <label [for]="'flexCheckDefault'+i">{{item.itemName}}</label>
+            </div>
+            <div *ngIf="isShowMoreFilter && i>=5" class="mb-2">
+              <input [id]="'flexCheckDefault'+i" type="checkbox" class="mr-2">
+              <label [for]="'flexCheckDefault'+i">{{item.itemName}}</label>
+            </div>
+          </ng-container>
+          <p *ngIf="!isShowMoreFilter" class="flex items-center cursor-pointer" (click)="toggleFilterItem(true)">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+            <span>顯示更多</span>
+          </p>
+          <p *ngIf="isShowMoreFilter" class="flex items-center cursor-pointer" (click)="toggleFilterItem(false)">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+            </svg>
+            <span>收起</span>
+          </p>
+          <div class="w-[75%] border-[#BFBEBE] border-b mt-3"></div>
+          <p class="text-lg my-3">出貨地點</p>
+          <div class="mb-2">
+            <input id="flexCheckDefault7" type="checkbox" class="mr-2">
+            <label for="flexCheckDefault7">國內</label>
+          </div>
+          <div class="mb-2">
+            <input id="flexCheckDefault8" type="checkbox" class="mr-2">
+            <label for="flexCheckDefault8">海外</label>
+          </div>
+          <div class="w-[75%] border-[#BFBEBE] border-b mt-3"></div>
+          <p class="text-lg my-3">價格範圍</p>
+          <div class="flex items-center">
+            <input type="text" class="w-[82px] border-[#BFBEBE] border rounded-md focus:outline-none px-4"
+              placeholder="最低價">
+            <hr class="w-full h-1 mx-2">
+            <input type="text" class="w-[82px] border-[#BFBEBE] border rounded-md focus:outline-none px-4"
+              placeholder="最高價">
+          </div>
+          <button class="w-full h-[33px] mt-3 bg-ecommerce-primary text-white rounded">套用</button>
+        </div>
+
+        <!-- loading 轉圈 -->
+        <div *ngIf="isLoading" class="col-span-12 md:col-span-10" (click)="hideLoadingSpinner()">
+          <div class="flex justify-center m-5 flex-wrap">
+            <div class="spinner-border animate-spin text-[#9F0000]">
+              <!-- <span class="animate-spin">Loading...</span> -->
+            </div>
+            <p class="w-full text-center mt-3 text-[#9F0000]">商品載入中</p>
+          </div>
+        </div>
+
+        <div *ngIf="!isLoading" class="col-span-12 md:col-span-10">
+          <!-- 商品列表分類 -->
+          <div class="flex justify-between items-center h-[80px]">
+            <div class="flex items-center text-gray-700">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+              <div class="text-ecommerce-primary mx-2">沐浴乳</div>
+              的搜尋結果
+            </div>
+            <button class="w-[50px] flex flex-shrink-0 md:hidden justify-center items-center"
+              (click)="toggleMobileFilterPanel(true)">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
+                  clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+          <div class="w-full h-[50px] flex items-center bg-[#E9ECEF] rounded">
+            <button class="w-[83px] h-[35px] rounded mx-2 ecommerce-tab-active">綜合排名</button>
+            <button class="w-[83px] h-[35px] rounded mx-2 text-ecommerce-primary">最新商品</button>
+            <button class="w-[83px] h-[35px] rounded mx-2 text-ecommerce-primary">熱銷商品</button>
+          </div>
+
+          <!-- 商品列表 -->
+
+          <div class="grid gap-x-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            <div *ngFor="let item of [0,1,2,3,4,5,6,7,8,9,10]" class="mt-4 rounded">
+              <!-- card -->
+              <div class="flex flex-col relative border">
+                <img src="https://bruce-fe-ec.web.app/images/item.png">
+                <!-- card body -->
+                <div class="flex flex-1 flex-col p-2">
+                  <h5 class="text-ecommerce-primary mb-1 text-xl">$2000</h5>
+                  <p class="text-sm mb-1">這是一罐沐浴乳這是一罐沐浴乳這是一罐沐浴乳</p>
+                  <p class="text-xs text-right">已售出 1000</p>
+                </div>
+                <span class="text-white bg-ecommerce-primary absolute top-0 right-0 p-1 text-xs rounded">雙11優惠</span>
+              </div>
+            </div>
+          </div>
+
+          <ul class="
+            flex
+            my-4
+            justify-center md:justify-end
+          ">
+            <li class="page-item cursor-pointer">
+              <a class="page-link">
+                <span>&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item cursor-pointer"><a class="page-link">1</a></li>
+            <li class="page-item cursor-pointer"><a class="page-link">2</a></li>
+            <li class="page-item cursor-pointer"><a class="page-link">3</a></li>
+            <li class="page-item cursor-pointer">
+              <a class="page-link">
+                <span>&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <!-- 手機板篩選區 -->
+      <div *ngIf="isShowMobileFilter"
+        class="w-full h-[100vh] absolute top-0 right-0 z-20 bg-white translate-x-[100%] transform-none duration-300 p-4">
+        <!-- header -->
+        <div class="flex justify-between">
+          <h5 class="flex items-center text-xl mb-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+            </svg>
+            條件篩選
+          </h5>
+          <button type="button" class="" (click)="toggleMobileFilterPanel(false)"><svg xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg></button>
+        </div>
+        <!-- body -->
+        <div class="">
+          <p class="text-lg mb-2">分類</p>
+          <ng-container *ngFor="let item of filterItem; let i=index">
+            <div *ngIf="i<=4" class="mb-2">
+              <input [id]="'flexCheckDefault'+i" type="checkbox" class="mr-2">
+              <label [for]="'flexCheckDefault'+i">{{item.itemName}}</label>
+            </div>
+            <div *ngIf="isShowMoreFilter && i>=5" class="mb-2">
+              <input [id]="'flexCheckDefault'+i" type="checkbox" class="mr-2">
+              <label [for]="'flexCheckDefault'+i">{{item.itemName}}</label>
+            </div>
+          </ng-container>
+          <p *ngIf="!isShowMoreFilter" class="flex items-center cursor-pointer" (click)="toggleFilterItem(true)">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+            <span>顯示更多</span>
+          </p>
+          <p *ngIf="isShowMoreFilter" class="flex items-center cursor-pointer" (click)="toggleFilterItem(false)">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+            </svg>
+            <span>收起</span>
+          </p>
+          <div class="w-[75%] border-[#BFBEBE] border-b mt-3"></div>
+          <p class="text-lg my-3">出貨地點</p>
+          <div class="mb-2">
+            <input id="flexCheckDefault7" type="checkbox" class="mr-2">
+            <label for="flexCheckDefault7">國內</label>
+          </div>
+          <div class="mb-2">
+            <input id="flexCheckDefault8" type="checkbox" class="mr-2">
+            <label for="flexCheckDefault8">海外</label>
+          </div>
+          <div class="w-[75%] border-[#BFBEBE] border-b mt-3"></div>
+          <p class="text-lg my-3">價格範圍</p>
+          <div class="flex items-center">
+            <input type="text" class="w-[150px] border-[#BFBEBE] border rounded-md focus:outline-none px-4"
+              placeholder="最低價">
+            <hr class="w-full h-1 mx-2">
+            <input type="text" class="w-[150px] border-[#BFBEBE] border rounded-md focus:outline-none px-4"
+              placeholder="最高價">
+          </div>
+          <button class="w-full h-[33px] mt-5 bg-ecommerce-primary text-white rounded">套用</button>
+        </div>
+      </div>
+
+      <!-- 購物車 Modal -->
+      <div *ngIf="isShowShoppingcar" [ngClass]="[true?'':'opacity-0 pointer-events-none']"
+        class="absolute top-0 left-0 right-0 w-full h-full bg-black/70 flex justify-center items-start duration-300 lg:items-center">
+        <div class="w-[90%] md:w-[20%] bg-white p-4 rounded mx-auto mt-[150px] md:mt-0">
+          <!-- header -->
+          <div class="flex justify-between border-b border-[#BFBEBE] p-2">
+            <h5 class="flex items-center text-2xl font-bold">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+              購物車
+            </h5>
+            <button type="button" class="" (click)="toggleShoppingcar(false)"><svg xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg></button>
+          </div>
+          <!-- body -->
+          <div class="h-[50vh] overflow-y-scroll no-scrollbar mb-3">
+            <div *ngFor="let item of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; let i=index"
+              class="w-full flex items-center my-2 border-b border-[#BFBEBE] pb-2">
+              <div class="w-[50px]">
+                <img class="w-full" src="https://bruce-fe-ec.web.app/images/item.png" alt="" />
+              </div>
+              <p class="flex-grow my-0 mx-3 text-sm">這是一罐沐浴乳</p>
+              <p class="text-ecommerce-primary w-[50px] my-0 mx-3">$2000</p>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+            </div>
+          </div>
+          <!-- footer -->
+          <div class="flex justify-between items-center">
+            <p class="font-bold">
+              共<span class="text-ecommerce-primary mx-1">N</span>筆項目
+            </p>
+            <button type="button" class="w-[70px] h-[40px] bg-ecommerce-primary rounded  text-white shadow-none">
+              去買單
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="lg:max-w-[1280px] lg:mx-auto mx-2 mb-5">
+    <div class="w-full border-ecommerce-primary border-b-4 mb-7 md:hidden"></div>
+    <div class="flex flex-col md:flex-row flex-wrap md:flex-nowrap items-center">
+      <div class="mx-auto mb-3 md:mb-0 md:flex-1">©2021 bruceFE. 版權所有。</div>
+      <div class="mx-auto">布魯斯前端教學</div>
+    </div>
+  </footer>
+</div>

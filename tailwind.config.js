@@ -20,7 +20,8 @@ module.exports = {
         'fb-popover': '#3e4042',
         'fb-active': '#323436',
         'fb-card': '#242526',
-        'fb': '#2e89ff'
+        'fb': '#2e89ff',
+        'ecommerce-primary': '#FA592F'
       }
     },
   },
